@@ -1,7 +1,7 @@
 #!/bin/bash
 device=wlan0
-timeoutAPenabled=2m
-timeoutDisconnected=10
+timeoutAP=2m
+timeoutDiscon=10
 # https://raspberrypi.stackexchange.com/questions/100195
 
 
@@ -99,7 +99,7 @@ case "$2" in
 	# Configure accesspoint if enabled
 	AP-ENABLED)
 		configure_ap
-		reconfigure_wpa_supplicant 2m &
+		reconfigure_wpa_supplicant "$timeoutAP" &
 		;;
 
 	CONNECTED)
@@ -111,6 +111,6 @@ case "$2" in
 	# Reconfigure wpa_supplicant to search for networks, 
 	# if nobody is connected to the ap
 	AP-STA-DISCONNECTED)
-		reconfigure_wpa_supplicant 10
+		reconfigure_wpa_supplicant "$timeoutDiscon"
 		;;
 esac
