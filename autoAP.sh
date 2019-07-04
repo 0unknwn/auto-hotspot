@@ -46,7 +46,7 @@ if [[ "$1" =~ "install" ]]; then
 			[Service]
 			ExecStart=/usr/sbin/wpa_cli -i %I -a $(pwd)/$0
 			Restart=on-failure
-			TimeoutSec=1
+			RestartSec=1
 
 			[Install]
 			WantedBy=multi-user.target
