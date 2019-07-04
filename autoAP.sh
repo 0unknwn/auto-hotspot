@@ -4,6 +4,12 @@ timeoutAP=2m
 timeoutDiscon=10
 # https://raspberrypi.stackexchange.com/questions/100195
 
+### Check if run as root ############################
+if [[ $EUID -ne 0 ]]; then
+	echo "This script must be run as root" 
+	echo "Try \"sudo $0 --install\""	
+	exit 1
+fi
 
 ### INSTALL SECTION #################################
 if [[ "$1" =~ "install" ]]; then
