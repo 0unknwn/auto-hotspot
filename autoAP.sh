@@ -35,7 +35,6 @@ if [[ "$1" =~ "install" ]]; then
 		Name=$device
 		[Network]
 		Address=192.168.4.1/24
-		IPForward=yes
 		DHCPServer=yes
 		[DHCPServer]
 		DNS=84.200.69.80 84.200.70.40
@@ -46,8 +45,8 @@ if [[ "$1" =~ "install" ]]; then
 		cat > /etc/systemd/system/wpa_cli@${device}.service <<-EOF
 			[Unit]
 			Description=Wpa_cli to Automatically Create an Accesspoint if no Client Connection is Available
-			After=network-online.target wpa_supplicant@${device}.service sys-subsystem-net-devices-%i.device
-			BindsTo=wpa_supplicant@${device}.service
+			After=multi-user.target
+			BindsTo=wpa_supplicant@%i.service
 
 			[Service]
 			ExecStart=/usr/sbin/wpa_cli -i %I -a $(pwd)/$0
