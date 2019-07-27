@@ -30,6 +30,7 @@ if [[ "$1" =~ "install" ]]; then
 		Name=$interfaceWired
 		[Network]
 		DHCP=yes
+		IPForward=yes
 	EOF
 
 	cat > $networkdCLIENT <<-EOF
@@ -45,6 +46,7 @@ if [[ "$1" =~ "install" ]]; then
 		[Network]
 		Address=$ipAddress
 		DHCPServer=yes
+		IPForward=yes
 		[DHCPServer]
 		DNS=84.200.69.80 84.200.70.40
 	EOF
