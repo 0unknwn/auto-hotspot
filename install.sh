@@ -6,11 +6,9 @@ ipAddress=192.168.4.1/24
 ### Check if run as root ############################
 if [[ $EUID -ne 0 ]]; then
 	echo "This script must be run as root" 
-	echo "Try \"sudo $0 $*\""	
+	echo "Try \"sudo $0\""	
 	exit 1
 fi
-
-### INSTALL SECTION #################################
 	
 ## Change over to systemd-networkd
 systemctl mask networking.service dhcpcd.service
