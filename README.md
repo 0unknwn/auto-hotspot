@@ -41,8 +41,7 @@ https://raspberrypi.stackexchange.com/questions/100195
 
 ```
 wget https://github.com/0unknwn/autoAccessPoint/blob/master/auto-hotspot
-chmod +x auto-hotspot
-sudo mv auto-hotspot /usr/local/bin
-sudo auto-hotspot --install
+chmod +x auto-hotspot install.sh
+sudo ./install.sh
 ```
 
