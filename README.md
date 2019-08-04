@@ -40,7 +40,7 @@ https://raspberrypi.stackexchange.com/questions/100195
 ## Install
 
 ```
-git clone git@github.com:0unknwn/auto-hotspot.git
+git clone https://github.com/0unknwn/auto-hotspot.git
 cd auto-hotspot
 chmod +x auto-hotspot install.sh
 sudo ./install.sh
