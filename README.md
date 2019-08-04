@@ -40,7 +40,8 @@ https://raspberrypi.stackexchange.com/questions/100195
 ## Install
 
 ```
-wget https://github.com/0unknwn/autoAccessPoint/blob/master/auto-hotspot
+git clone git@github.com:0unknwn/auto-hotspot.git
+cd auto-hotspot
 chmod +x auto-hotspot install.sh
 sudo ./install.sh
 ```
