@@ -3,7 +3,7 @@ This script is intended for the Raspeberry Pi. It will automatically create a ho
 Therefore it will use `systemd-networkd`, `wpa_supplicant` and `wpa_cli`.
 If no device is connected for a while to the hotspot it will search for neworks again.
 
-You need to have a wpa_supllicant@device.service file similiar to this.
+You need to have a wpa_supllican-_device_.conf file similiar to this.
 
 ```
 country=FR                                                                        
