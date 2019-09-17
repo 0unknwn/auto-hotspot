@@ -52,6 +52,11 @@ case "$1" in
 
 	--start-ap)
 		wpa_cli -i$interfaceWifi select_network 0
+		exit 0
+		;;
+		
+	--start-ap-static)
+		wpa_cli -i$interfaceWifi select_network 0
 		sleep 1
 		systemctl stop wpa_cli@${interfaceWifi}.service
 		exit 0
