@@ -40,7 +40,7 @@ cat > /etc/systemd/network/12-${interfaceWifi}-AP.network <<-EOF
 	Address=$ipAddress
 	DHCPServer=yes
 	[DHCPServer]
-	DNS=84.200.69.80 84.200.70.40
+	DNS=84.200.69.80 84.200.70.40 1.1.1.1
 EOF
 
 cp $(pwd)/auto-hotspot /usr/local/sbin/
