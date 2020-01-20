@@ -23,8 +23,7 @@ cat > /etc/systemd/network/04-${interfaceWired}.network <<-EOF
 	Name=$interfaceWired
 	[Network]
 	DHCP=yes
-	IPForward=yes
-	EOF
+EOF
 
 cat > /etc/systemd/network/08-${interfaceWifi}-CLI.network <<-EOF
 	[Match]
@@ -38,6 +37,8 @@ cat > /etc/systemd/network/12-${interfaceWifi}-AP.network <<-EOF
 	Name=$interfaceWifi
 	[Network]
 	Address=$ipAddress
+	IPForward=yes
+	IPMasquerade=yes
 	DHCPServer=yes
 	[DHCPServer]
 	DNS=84.200.69.80 84.200.70.40 1.1.1.1
