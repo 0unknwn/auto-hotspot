@@ -11,14 +11,7 @@ ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1                                                                   
 ap_scan=1
 
-### your network(s) ###    
-network={                                                                         
-    priority=10       # add a priority higher then 0 to any network                                                         
-    ssid="yourWifi"   # except the access point's one!
-    psk="passphrase"                                                 
-} 
-
-### your hotspot ###                                                                                  
+### your hotspot ###      # has to be the first network section!                                                                                  
 network={                                                                        
     ssid="accesspoint"    # your access point's name                                                            
     mode=2                                                                       
@@ -26,6 +19,13 @@ network={
     psk="passphrase"      # your access point's password                                    
     frequency=2462                                                               
 }
+
+### your network(s) ###    
+network={                                                                         
+    priority=10       # add a priority higher then 0 to any network                                                         
+    ssid="yourWifi"   # except the access point's one!
+    psk="passphrase"                                                 
+} 
 ```
 
 After having installed the script (see below) you can start a hotspot manually by running `auto-hotspot --start-ap` 
