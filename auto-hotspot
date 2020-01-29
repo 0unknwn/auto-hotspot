@@ -50,6 +50,7 @@ case "$1" in
 
 	--start-ap)
 		wpa_cli -i$interfaceWifi select_network 0
+		configure_ap
 		exit 0
 		;;
 		
