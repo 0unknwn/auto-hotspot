@@ -12,7 +12,8 @@ update_config=1
 ap_scan=1
 
 ### your hotspot ###      # has to be the first network section!                                                                                  
-network={                                                                        
+network={
+    priority=0            # Lowest priority, so wpa_supplicant prefers the other networks below 
     ssid="accesspoint"    # your access point's name                                                            
     mode=2                                                                       
     key_mgmt=WPA-PSK                                                             
@@ -21,8 +22,7 @@ network={
 }
 
 ### your network(s) ###    
-network={                                                                         
-    priority=10       # add a priority higher then 0 to any network                                                         
+network={                                                                                                                               
     ssid="yourWifi"   # except the access point's one!
     psk="passphrase"                                                 
 } 
