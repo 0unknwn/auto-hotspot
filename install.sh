@@ -11,11 +11,18 @@ if [[ $EUID -ne 0 ]]; then
 fi
 	
 ## Change over to systemd-networkd
-systemctl mask networking.service dhcpcd.service
-mv /etc/network/interfaces /etc/network/interfaces~
-sed -i '1i resolvconf=NO' /etc/resolvconf.conf
+## https://raspberrypi.stackexchange.com/questions/108592
+# deinstall classic networking
+apt --autoremove purge ifupdown dhcpcd5 isc-dhcp-client isc-dhcp-common rsyslog
+apt-mark hold ifupdown dhcpcd5 isc-dhcp-client isc-dhcp-common rsyslog raspberrypi-net-mods openresolv
+rm -r /etc/network /etc/dhcp
+
+# setup/enable systemd-resolved and systemd-networkd
+apt --autoremove purge avahi-daemon
+apt-mark hold avahi-daemon libnss-mdns
+apt install libnss-resolve
+ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 systemctl enable systemd-networkd.service systemd-resolved.service
-ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
 ## Install configuration files for systemd-networkd
 cat > /etc/systemd/network/04-${interfaceWired}.network <<-EOF
@@ -30,6 +37,8 @@ cat > /etc/systemd/network/08-${interfaceWifi}-CLI.network <<-EOF
 	Name=$interfaceWifi
 	[Network]
 	DHCP=yes
+	LinkLocalAddressing=yes
+	MulticastDNS=yes
 EOF
 		
 cat > /etc/systemd/network/12-${interfaceWifi}-AP.network <<-EOF
@@ -40,6 +49,8 @@ cat > /etc/systemd/network/12-${interfaceWifi}-AP.network <<-EOF
 	IPForward=yes
 	IPMasquerade=yes
 	DHCPServer=yes
+	LinkLocalAddressing=yes
+	MulticastDNS=yes
 	[DHCPServer]
 	DNS=84.200.69.80 84.200.70.40 1.1.1.1
 EOF
