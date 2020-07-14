@@ -13,14 +13,14 @@ fi
 ## Change over to systemd-networkd
 ## https://raspberrypi.stackexchange.com/questions/108592
 # deinstall classic networking
-apt --autoremove purge ifupdown dhcpcd5 isc-dhcp-client isc-dhcp-common rsyslog
+apt --autoremove -y purge ifupdown dhcpcd5 isc-dhcp-client isc-dhcp-common rsyslog
 apt-mark hold ifupdown dhcpcd5 isc-dhcp-client isc-dhcp-common rsyslog raspberrypi-net-mods openresolv
 rm -r /etc/network /etc/dhcp
 
 # setup/enable systemd-resolved and systemd-networkd
-apt --autoremove purge avahi-daemon
+apt --autoremove -y purge avahi-daemon
 apt-mark hold avahi-daemon libnss-mdns
-apt install libnss-resolve
+apt install -y libnss-resolve
 ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 systemctl enable systemd-networkd.service systemd-resolved.service
 
