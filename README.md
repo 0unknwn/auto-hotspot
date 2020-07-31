@@ -23,7 +23,7 @@ network={
 
 ### your network(s) ###    
 network={                                                                                                                               
-    ssid="yourWifi"   # except the access point's one!
+    ssid="yourWifi"
     psk="passphrase"                                                 
 } 
 ```
