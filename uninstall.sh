@@ -12,7 +12,7 @@ systemctl disable systemd-networkd.service systemd-resolved.service
 apt-mark unhold ifupdown dhcpcd5 isc-dhcp-client isc-dhcp-common rsyslog raspberrypi-net-mods openresolv avahi-daemon libnss-mdns
 rm /etc/resolv.conf
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
-apt install ifupdown dhcpcd5 isc-dhcp-client rsyslog avahi-daemon
+apt install -y ifupdown dhcpcd5 isc-dhcp-client rsyslog avahi-daemon
 apt purge --autoremove -y libnss-resolve
 
 # Remove the wpa_cli script an disable wpa_cli.service
