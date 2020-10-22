@@ -1,4 +1,4 @@
-# autoAccessPoint
+# Auto Access Point
 This script is intended for the Raspeberry Pi. It will automatically create a hotspot, if there is no known wifi nearby. 
 Therefore it will use [`systemd-networkd`][1], `wpa_supplicant` and `wpa_cli`.
 If no device is connected to the hotspot for a while it will search for neworks again.
@@ -11,10 +11,10 @@ ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1                                                                   
 ap_scan=1
 
-### your hotspot ###      # has to be the first network section!                                                                                  
+### auto hotspot ###      # has to be the first network section!                                                                                  
 network={
     priority=0            # Lowest priority, so wpa_supplicant prefers the other networks below 
-    ssid="accesspoint"    # your access point's name                                                            
+    ssid="autohotspot"    # your access point's name                                                            
     mode=2                                                                       
     key_mgmt=WPA-PSK                                                             
     psk="passphrase"      # your access point's password                                    
