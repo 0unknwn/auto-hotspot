@@ -30,6 +30,7 @@ cat > /etc/systemd/network/04-${interfaceWired}.network <<-EOF
 	Name=$interfaceWired
 	[Network]
 	DHCP=yes
+	MulticastDNS=yes
 EOF
 
 cat > /etc/systemd/network/08-${interfaceWifi}-CLI.network <<-EOF
