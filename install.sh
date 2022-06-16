@@ -79,5 +79,7 @@ fi
 
 systemctl daemon-reload
 systemctl enable wpa_cli@${interfaceWifi}.service
+systemctl enable wpa_supplicant@${interfaceWifi}.service &&
+systemctl disable wpa_supplicant.service
 echo "Reboot now!"
 exit 0
